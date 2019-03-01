@@ -1,1 +1,12 @@
 .footer
+	.footer__player
+		.footer__player-btn.footer__player-btn--prev Пред.
+		.footer__player-btn.footer__player-btn--big.footer__player-btn--play Старт/Стоп
+		.footer__player-btn.footer__player-btn--next След.
+
+	.products__tabs-content
+		+productTabContent(100, "", "live100")
+		+productTabContent(200, "", "live200bt")
+		+productTabContent(400, "", "live400bt")
+		+productTabContent(500, "", "live500bt")
+		+productTabContent(650, "active", "live650bt")

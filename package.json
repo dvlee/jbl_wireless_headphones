@@ -1,5 +1,5 @@
 {
-  "name": "jbl_wireless_headphones",
+  "name": "jbl_live_headphones",
   "version": "1.0.0",
   "description": "",
   "main": "",
@@ -22,13 +22,18 @@
     "@babel/preset-env": "^7.3.1",
     "browser-sync": "^2.26.3",
     "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
     "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
     "gulp-imagemin": "^5.0.3",
     "gulp-plumber": "^1.2.1",
     "gulp-pug": "^4.0.1",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.1",
     "jquery": "^3.3.1",
-    "reset-css": "^4.0.1"
+    "reset-css": "^4.0.1",
+    "scrollmagic": "^2.0.6",
+    "swiper": "^4.4.6"
   }
 }

@@ -6,15 +6,17 @@ let babel = require("gulp-babel");
 let plumber = require("gulp-plumber");
 let sourcemaps = require("gulp-sourcemaps");
 let imagemin = require("gulp-imagemin");
+let autoprefixer = require("gulp-autoprefixer");
+let uglify = require("gulp-uglify");
+let concat = require("gulp-concat");
 
 gulp.task('copy', () => {
-    return gulp.src(['src/resources/fonts/*.*'])
-        .pipe(gulp.dest('dist/fonts'))
+    return gulp.src(['src/resources/**/*.*'])
+        .pipe(gulp.dest('dist'))
 });
 
 gulp.task('pug', () => {
     return gulp.src('src/index.pug')
-        .pipe(plumber())
         .pipe(pug({pretty: true}))
         .pipe(gulp.dest('dist'))
 });
@@ -22,25 +24,29 @@ gulp.task('pug', () => {
 gulp.task('scss', () => {
     return gulp.src(['src/scss/*.scss'])
         .pipe(sourcemaps.init())
-        .pipe(plumber())
-        .pipe(sass())
+        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('dist/css'))
 });
 
 gulp.task('js', () => {
-    return gulp.src('src/js/main.js')
+    return gulp.src(['src/js/fullpage.min.js','src/js/swiper.min.js','src/js/main.js'])
         .pipe(sourcemaps.init())
-        .pipe(plumber())
         .pipe(babel({
             presets: ['@babel/env']
         }))
+        .pipe(concat('main.js'))
+        .pipe(uglify())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('dist/js'))
 });
 
 gulp.task('images', () => {
-    return gulp.src(['src/images/*.*'])
+    return gulp.src(['src/images/**/*.*'])
         .pipe(imagemin())
         .pipe(gulp.dest('dist/images'))
 });

@@ -1,1 +1,17 @@
 .header
+	.container
+		.header__inner
+			a.header__logo(href="")
+				img(src="images/logo.png", alt="JBL")
+			.header__menu
+				button.header__menu-btn(type="button")
+					span
+					span
+					span
+			ul.header__nav
+				each product in products
+					li.header__nav-item
+						a.header__nav-link(href=product.url, target="_blank", onclick="sendGA('header', 'live"+product.model+"');") LIVE
+							|
+							|
+							strong= product.model

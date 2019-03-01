@@ -1,0 +1,28 @@
+.section.section--technologies(data-scene="4")
+	.section__inner.container
+		.section__text
+			.section__title Технологии
+				br
+				| Ambient Aware
+				br
+				| и TalkThru
+			.section__description Не позволяй музыке остановиться! Будь в курсе всего происходящего,
+				br
+				| не прерывая прослушивание. Прикосновение к кнопке Ambient Aware
+				br
+				| увеличивает слышимость окружающей среды и позволяет слышать,
+				br
+				| что происходит вокруг тебя. Режим TalkThru понижает уровень
+				br
+				| музыки, позволяя разговаривать с друзьями
+				br
+				| не снимая наушников
+
+		.section__products
+			.m-hidden
+				.products
+					+product(400, "default", "ambient", "400BT")
+					+product(500, "default", "ambient", "500BT")
+
+			.m-visible
+				+productsSwiper(['400', '500'])

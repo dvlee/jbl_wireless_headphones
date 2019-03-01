@@ -1,0 +1,21 @@
+.section.section--wireless(data-scene="2")
+	.section__inner.container
+		.section__text
+			.section__title Звук без
+				br
+				| проводов
+			.section__description Музыка всегда будет с тобой благодаря беспроводному
+				br
+				| подключению и увеличенному времени работы аккумулятора,
+				br
+				| а также функции быстрой зарядки
+
+		.section__products
+			.m-hidden
+				.products
+					+product(400, "default", "wireless", "400BT")
+					+product(500, "default", "wireless", "500BT")
+					+product(650, "default", "wireless", "650BT")
+			.m-visible
+				+productsSwiper(['400', '500', '650'])
+

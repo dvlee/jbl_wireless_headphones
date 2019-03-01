@@ -1,0 +1,89 @@
+mixin product(model, size = "default", gtagCategory, gtagLabel)
+	- 
+		var product = products[model];
+		var productClass = size != "def" ? "product__item--" + size : "";
+	.products__item(class=productClass)
+		.products__image
+			if size == "default"
+				img(src="images/products/live"+product.model+"_"+product.colors[0]+".png", alt="LIVE " + product.title)
+			else
+				img(src="images/products/"+product.model+"_"+size+".png", alt="LIVE " + product.title)
+		.products__name LIVE
+			|
+			|
+			strong= product.title
+		.products__description= product.description
+		.products__features
+			each feature in product.features
+				.products__features-icon(class="products__features-icon--" + feature)= feature
+					.products__features-tooltip= features[feature]
+		.products__more.m-hidden
+			a.btn.btn--move-to-last(href="#",data-model=model, onclick="sendGA('"+gtagCategory+"','"+gtagLabel+"')") подробнее
+
+
+mixin productsSwiper(models = ['650', '500', '400', '200', '100'])
+	.mobile-swiper.swiper-container
+		.swiper-wrapper
+			each model in models
+				+product(model)
+		.swiper-button-prev
+		.swiper-button-next
+
+mixin productTab(model, classes = "", gtagCategory)
+	- 
+		var product = products[model];
+	.products__tabs-item(data-model=model, class= classes, onclick="sendGA('"+gtagCategory+"','description')")
+		.products__tabs-item-image
+			each color, index in product.colors
+				if index == 0
+					img(src="images/products/live"+product.model+"_"+color+".png", alt="LIVE " + product.title, class="products__tabs-item-image--"+color+" active")
+				else
+					img(src="images/products/live"+product.model+"_"+color+".png", alt="LIVE " + product.title, class="products__tabs-item-image--"+color)
+			.products__tabs-item-info.m-visible
+		.products__tabs-item-name LIVE
+			|
+			|
+			strong= product.title
+			.products__tabs-item-colors
+				each color, index in product.colors
+					if index == 0
+						.products__tabs-item-color.active(class="products__tabs-item-color--"+color, data-color=color, onclick="sendGA('"+gtagCategory+"','color')")
+					else
+						.products__tabs-item-color(class="products__tabs-item-color--"+color, data-color=color, onclick="sendGA('"+gtagCategory+"','color')")
+
+
+mixin productTabContent(model, classes = "", gtagCategory)
+	- 
+		var product = products[model];
+	.products__tabs-content-item(class="products__tabs-content-item--"+model+" "+classes)
+		.m-visible.products__tabs-content-image
+			each color, index in product.colors
+				if index == 0
+					img(src="images/products/live"+product.model+"_"+color+".png", alt="LIVE " + product.title, class="products__tabs-content-image--"+color+" active")
+				else
+					img(src="images/products/live"+product.model+"_"+color+".png", alt="LIVE " + product.title, class="products__tabs-content-image--"+color)
+		.m-visible.products__tabs-content-name LIVE
+			|
+			|
+			strong= product.title
+		.m-visible.products__tabs-content-colors
+			each color, index in product.colors
+					if index == 0
+						.products__tabs-content-color.active(class="products__tabs-content-color--"+color, data-color=color, onclick="sendGA('"+gtagCategory+"','color')")
+					else
+						.products__tabs-content-color(class="products__tabs-content-color--"+color, data-color=color, onclick="sendGA('"+gtagCategory+"','color')")
+		each row in product.specs
+			.products__info
+				each spec in row
+					.products__info-row
+						.products__info-title= spec.title
+						.products__info-space
+						.products__info-value= spec.value
+		.products__info
+			.products__info-features
+				each feature in product.features
+					.products__features-icon(class="products__features-icon--"+feature)= feature
+						.products__features-tooltip= features[feature]
+			.products__info-buy.m-hidden
+				a.btn.btn--buy(href=product.url, target="_blank", onclick="sendGA('"+gtagCategory+"','buy')") купить в интернет-магазине
+		a.m-visible.products__tabs-content-close(href="#") X

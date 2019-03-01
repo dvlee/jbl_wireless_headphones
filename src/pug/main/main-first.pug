@@ -1,0 +1,29 @@
+.section.section--about(data-scene="1")
+	.section__inner.container
+		.section__text
+			.section__title
+				h1 Новая серия наушников JBL Live
+				h2 Удовольствие
+					br
+					| от жизни
+					br
+					| здесь и сейчас
+			.section__description Легендарный звук JBL теперь представлен в новом
+				br
+				| дизайне. Обновленные материалы, эргономичная форма
+				br
+				| и новые технологии позволяют всегда оставаться на связи
+				br
+				| и получать удовольствие от прослушивания любимой музыки.
+
+
+		.section__products
+			.m-hidden
+				.products.products--vertical
+					+product(650, 'small')
+					+product(500, 'small')
+					+product(400, 'small')
+					+product(200, 'small')
+					+product(100, 'small')
+			.m-visible
+				+productsSwiper(['650', '500', '400', '200', '100'])

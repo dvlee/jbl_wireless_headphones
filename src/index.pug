@@ -1,7 +1,106 @@
 extends pug/base
 
-block content
-    include pug/header
-    include pug/main
-    include pug/footer
+block append vars
+	-
+		var products = {
+		650: {
+		model: "650btnc",
+		title: "650BT NC",
+		description: "Беспроводные полноразмерные наушники с шумоподавлением",
+		features: ["ga", "anc", "battery_30anc", "quickcharge", "devices", "fabricplus"],
+		url: "https://harman.club/jbllive650btncwht-jbl-live650btnc",
+		specs: [[
+		{title: "Диаметр драйверов", value: "40 мм"},
+		{title: "Частотный диапазон", value: "16 Гц - 20 кГц"},
+		{title: "Чувствительность", value: "100 дБ"},
+		{title: "Импенданс", value: "32 Ом"}
+		],[
+		{title: "Аккумулятор", value: "Li-Ion, 700 мА*ч"},
+		{title: "Время зарядки аккумулятора", value: "2 ч"},
+		{title: "Чехол для переноски", value: "есть"},
+		{title: "Вес", value: "260 г"}
+		]], colors: ['black','blue','white']},
+		500: {
+		model: "500bt",
+		title: "500BT",
+		description: "Беспроводные полноразмерные наушники",
+		features: ["ga", "tech", "battery_30", "quickcharge", "devices", "fabricplus"],
+		url: "https://harman.club/jbllive500btblk-jbl-live500bt",
+		specs: [[
+		{title: "Диаметр драйверов", value: "50 мм"},
+		{title: "Частотный диапазон", value: "18 Гц - 20 кГц"},
+		{title: "Чувствительность", value: "108 дБ"},
+		{title: "Импенданс", value: "32 Ом"}
+		],[
+		{title: "Аккумулятор", value: "Li-Ion, 700 мА*ч"},
+		{title: "Время зарядки аккумулятора", value: "2 ч"},
+		{title: "Чехол для переноски", value: "есть"},
+		{title: "Вес", value: "231,6 г"}
+		]], colors: ['red','black','blue','green','white']},
+		400: {model: "400bt", title: "400BT", description: "Беспроводные накладные наушники", features: ["ga", "tech", "battery_24", "quickcharge", "devices", "fabricplus"], url: "https://harman.club/jbllive400btred-jbl-live400bt", specs: [[
+		{title: "Диаметр драйверов", value: "40 мм"},
+		{title: "Частотный диапазон", value: "20 Гц - 20 кГц"},
+		{title: "Чувствительность", value: "106 дБ"},
+		{title: "Импенданс", value: "32 Ом"}
+		],[
+		{title: "Аккумулятор", value: "Li-Ion, 700 мА*ч"},
+		{title: "Время зарядки аккумулятора", value: "2 ч"},
+		{title: "Чехол для переноски", value: "есть"},
+		{title: "Вес", value: "185,8 г"}
+		]], colors: ['blue','black','green','red','white']},
+		200: {model: "200bt", title: "200BT", description: "Беспроводные полноразмерные наушники с шумоподавлением", features: ["battery_10", "light", "devices", "fabric"], url: "https://harman.club/jbllive200btblu-jbl-live-200bt", specs: [[
+		{title: "Диаметр драйверов", value: "8 мм"},
+		{title: "Частотный диапазон", value: "20 Гц - 20 кГц"},
+		{title: "Чувствительность", value: "102 дБ"},
+		{title: "Импенданс", value: "16 Ом"}
+		],[
+		{title: "Аккумулятор", value: "Li-Ion, 170 мА*ч"},
+		{title: "Время зарядки аккумулятора", value: "2 ч"},
+		{title: "Чехол для переноски", value: "есть"},
+		{title: "Вес", value: "35,8 г"}
+		]], colors: ['green','black','blue','red','white']},
+		100: {model: "100", title: "100", description: "Наушники-вкладыши", features: ["light", "fabric"], url: "https://harman.club/jbllive100blk-jbl-live-100", specs: [[
+		{title: "Диаметр драйверов", value: "8 мм"},
+		{title: "Частотный диапазон", value: "20 Гц - 20 кГц"},
+		{title: "Чехол для переноски", value: "есть"}
+		],[]], colors: ['white','black','blue','green','red']}
+		};
+		var features = {
+		"ga": "Поддержка Google Ассистента",
+		"anc": "Активное шумоподавление",
+		"battery_30anc": "30 часов работы без ANC",
+		"battery_30": "30 часов работы",
+		"battery_24": "24 часа работы",
+		"battery_10": "10 часов работы",
+		"quickcharge": "Быстрая зарядка (15 мин = 2 ч работы)",
+		"devices": "Легкое переключение между устройствами",
+		"fabric": "Тканевая оплетка кабеля",
+		"fabricplus": "Тканевая оплетка кабеля и оголовья",
+		"tech": "Ambient Aware и TalkThru",
+		"light": "Облегченная конструкция"
+		};
 
+block meta
+	meta(name="title", content="JBL Live")
+	meta(name="description", content="LIVE: новая серия наушников от JBL. Удовольствие здесь и сейчас.")
+	meta(name="og:title", content="JBL Live")
+	meta(name="og:description", content="LIVE: новая серия наушников от JBL. Удовольствие здесь и сейчас.")
+	meta(name="og:image", content="https://jbl-live.com/images/share-img.png")
+	meta(name="og:url", content="https://jbl-live.com/")
+
+append body-start
+	include pug/metrics
+
+append body-end
+	<!--Start of PopMechanic script-->
+	script(id="popmechanic-script", src="https://static.popmechanic.ru/service/loader.js?c=3661")
+	<!--End of PopMechanic script--> 
+
+
+block content
+	include pug/loader
+	#page
+		include pug/backlayer
+		include pug/header
+		include pug/main
+		include pug/footer

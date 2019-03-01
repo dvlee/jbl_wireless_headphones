@@ -1,0 +1,5 @@
+.backlayer
+	each scene in [1,2,3,4,5]
+		.scene(class="scene--"+scene,data-scene=scene)
+			each frame in [1,2,3,4,5,6]
+				img(src="images/scenes/scene_"+scene+"_0"+frame+".jpg", alt="scene")
